@@ -1,16 +1,36 @@
-.env
 # Local .terraform directories
 **/.terraform/*
 
-# Ignore variables files
-*.auto.tfvars
+# .tfstate files
+*.tfstate
+*.tfstate.*
 
-# Ignore override files
-*.tfoverride
+# Crash logs
+crash.log
+crash.*.log
 
-# Ignore environment-specific files
-.envrc
+# Exclude all .tfvars files that store secret data (unless you want to commit template/example vars)
+*.tfvars
+*.tfvars.json
 
-# Ignore CLI configuration files
+# Ignore override files as they are usually used locally
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform plan output
+*.tfplan
+
+# CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore local environment variable files
+.env
+.env.*
+
+# Terraform lock file (optional — commit only if you use consistent provider versions across teams)
+# .terraform.lock.hcl
+
+*tfbackend
