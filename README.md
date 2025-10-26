@@ -94,15 +94,4 @@ terraform {
   }
 }
 ```
-
-Notes
-
-- Backend settings that contain secrets should be provided via CLI or environment variables or via a separate backend config file (see `04-backends/*.tfbackend` files in this repo).
-- Backend blocks are not versioned in the same way as other Terraform config — treat backend access and IAM permissions carefully.
-
-If you'd like, I can:
-
-- Add a small `CONTRIBUTING.md` section describing how to create the S3 bucket + DynamoDB table and a policy that grants the necessary permissions.
-- Walk through the `terraform init` output you're getting and point out exactly why it isn't switching to S3.
-
-Enjoy experimenting — if you want me to also add examples of `aws-cli` commands or a CloudFormation script to create the S3/DynamoDB resources, say the word and I'll add them.
+Enjoy experimenting!
