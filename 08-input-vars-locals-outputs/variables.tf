@@ -10,7 +10,7 @@ variable "ec2_instance_type" {
   description = "The type of managed EC2 instances."
 
   validation {
-    condition     = startswith(var.ec2_instance_type, "t2")
+    condition     = contains(["t2.micro", "t2.small"], var.ec2_instance_type)
     error_message = "Only t2 instance types are allowed."
   }
 }
