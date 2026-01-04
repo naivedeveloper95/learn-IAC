@@ -10,8 +10,8 @@ variable "ec2_instance_type" {
   description = "The type of managed EC2 instances."
 
   validation {
-    condition     = contains(["t2.micro", "t3.micro", "t4.micro"], var.ec2_instance_type)
-    error_message = "Invalid instance type. Allowed types are: t2.micro, t3.micro, t4.micro."
+    condition     = startswith(var.ec2_instance_type, "t2")
+    error_message = "Only t2 instance types are allowed."
   }
 }
 
@@ -33,4 +33,10 @@ variable "ec2_volume_type" {
   type        = string
   default     = "gp3"
   description = "The type of the EC2 root volume."
+}
+
+variable "additional_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags to apply to resources."
 }

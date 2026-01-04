@@ -21,13 +21,13 @@ resource "aws_instance" "compute" {
 
   root_block_device {
     delete_on_termination = true
-    volume_size           = var.ec2_volume_config.size
-    volume_type           = var.ec2_volume_config.type
+    volume_size           = var.ec2_volume_config.config.size
+    volume_type           = var.ec2_volume_config.config.type
   }
 
-  tags = {
-    Name = "Terraform-Compute-Instance"
-  }
+  tags = merge(var.additional_tags, {
+    ManagedBy = "Terraform"
+  })
 }
 
 # AMI ID - ap-south-1 - ami-0ff91eb5c6fe7cc86
