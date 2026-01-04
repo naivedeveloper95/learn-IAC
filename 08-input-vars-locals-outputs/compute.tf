@@ -15,20 +15,18 @@ data "aws_ami" "ubuntu" {
 
 }
 
-resource "aws_instance" "compute" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.ec2_instance_type
+# resource "aws_instance" "compute" {
+#   ami           = data.aws_ami.ubuntu.id
+#   instance_type = var.ec2_instance_type
 
-  root_block_device {
-    delete_on_termination = true
-    volume_size           = var.ec2_volume_config.config.size
-    volume_type           = var.ec2_volume_config.config.type
-  }
+#   root_block_device {
+#     delete_on_termination = true
+#     volume_size           = var.ec2_volume_config.config.size
+#     volume_type           = var.ec2_volume_config.config.type
+#   }
 
-  tags = merge(var.additional_tags, {
-    ManagedBy = "Terraform"
-  })
-}
+#   tags = merge(local.common_tags, var.additional_tags)
+# }
 
 # AMI ID - ap-south-1 - ami-0ff91eb5c6fe7cc86
 

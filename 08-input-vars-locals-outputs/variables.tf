@@ -40,3 +40,9 @@ variable "additional_tags" {
   default     = {}
   description = "Additional tags to apply to resources."
 }
+
+variable "my_sensitive_value" {
+  type        = string
+  description = "A sensitive value that should not be displayed in logs or output."
+  sensitive   = true
+}
