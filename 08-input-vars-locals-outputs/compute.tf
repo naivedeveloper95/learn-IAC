@@ -17,12 +17,12 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "compute" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.ec2_instance_type
 
   root_block_device {
     delete_on_termination = true
-    volume_size           = 10
-    volume_type           = "gp3"
+    volume_size           = var.ec2_volume_config.size
+    volume_type           = var.ec2_volume_config.type
   }
 
   tags = {
